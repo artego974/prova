@@ -1,0 +1,18 @@
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+
+@Entity("user")
+export class User{
+    @PrimaryGeneratedColumn()
+    id:number
+    @Column({nullable:false, length:100})
+    name:string
+    @Column({nullable:false, length:100, unique:true})
+    email:string
+    @Column({nullable:false, length:11, unique:true})
+    cpf:string
+    @Column({nullable:false, length:255})
+    password:string
+    @Column({nullable:false})
+    role:"admin" | "cerimonialista"
+}
