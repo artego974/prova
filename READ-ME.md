@@ -1,4 +1,5 @@
 Senac Wedding
+Projeto para organização de eventos com  
 
 baixe o projeto e rode 
 ``````bash
