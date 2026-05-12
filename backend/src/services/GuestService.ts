@@ -31,4 +31,20 @@ export class GuestService{
         const user = this.repo.delete(id)
         return user
     }
-}
+    async dashboard(){
+        const guest = await this.repo.find()
+        const total = guest.length
+        const check_in = guest.filter(g=> g.check_in).length
+        const pending = total - check_in
+        
+        const ocuppancy = total == 0 ? 0 : Number(((check_in/total) * 100).toFixed(2))
+        return {total, check_in, pending, ocuppancy}
+    }
+    async checkin(id:any){
+        const guest = await this.repo.findOneBy({id:id})
+        if(!guest) throw new Error("guest nao encontrado")
+        if(guest.check_in) throw new Error("user ja fez checkIn")
+        guest.check_in = true
+        return this.repo.save(guest)
+    }
+}   

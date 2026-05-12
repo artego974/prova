@@ -41,4 +41,21 @@ export class GuestController{
             return res.status(400).json({message:e.message})
         }
     }
+    async dashboard(req:Request,res:Response){
+        try{
+            const user = await service.dashboard()
+            return res.status(200).json(user)
+        }catch(e:any){
+            return res.status(400).json({message:e.message})
+        }
+    }
+    async checkin(req:Request,res:Response){
+        try{
+            const {id} = req.params
+            const user = await service.checkin(id)
+            return res.status(200).json(user)
+        }catch(e:any){
+            return res.status(400).json({message:e.message})
+        }
+    }
 }
