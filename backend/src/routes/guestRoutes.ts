@@ -6,7 +6,7 @@ import { roleMid } from "../middlewares/roleMid";
 const guestRoutes = Router()
 const controller = new GuestController()
 
-guestRoutes.get("/list", authMid, roleMid("admin"), controller.list.bind(controller))
+guestRoutes.get("/list", authMid, controller.list.bind(controller))
 guestRoutes.post("/create", authMid, controller.create.bind(controller))
 guestRoutes.put("/update/:id", authMid, controller.update.bind(controller))
 guestRoutes.delete("/delete/:id", authMid, controller.delete.bind(controller))
