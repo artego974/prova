@@ -4,7 +4,7 @@ function Card(props) {
     async function Checkin() {
         const token = localStorage.getItem("token")
         const response = await fetch(`http://localhost:3000/guest/checkin/${props.id}`, {
-            method: 'patch',
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json',
             Authorization: `Bearer ${token}` 
          }
