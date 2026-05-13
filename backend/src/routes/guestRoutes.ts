@@ -6,11 +6,11 @@ import { roleMid } from "../middlewares/roleMid";
 const guestRoutes = Router()
 const controller = new GuestController()
 
-guestRoutes.get("/list",  controller.list.bind(controller)) //authMid
-guestRoutes.post("/create",  controller.create.bind(controller)) //authMid
-guestRoutes.put("/update/:id",  controller.update.bind(controller)) //authMid
-guestRoutes.delete("/delete/:id",  controller.delete.bind(controller)) //authMid
-guestRoutes.get("/dashboard",  controller.dashboard.bind(controller)) //authMid
-guestRoutes.patch("/checkin/:id",  controller.checkin.bind(controller)) //authMid
+guestRoutes.get("/list", authMid,  controller.list.bind(controller)) 
+guestRoutes.post("/create", authMid,  controller.create.bind(controller)) 
+guestRoutes.put("/update/:id", authMid,  controller.update.bind(controller)) 
+guestRoutes.delete("/delete/:id", authMid,  controller.delete.bind(controller)) 
+guestRoutes.get("/dashboard", authMid,  controller.dashboard.bind(controller)) 
+guestRoutes.patch("/checkin/:id", authMid, controller.checkin.bind(controller)) 
 
 export default guestRoutes

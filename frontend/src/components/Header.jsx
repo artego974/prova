@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 function Header() {
     const navigate = useNavigate()
   return (
-    <div className='w-full min-h-1/6 flex justify-center items-center flex-col'>
+    <div className='w-full min-h-1/6 flex justify-center items-center flex-col mt-5'>
         <h1 className='font-bold text-4xl mb-3'>Senac Wedding</h1>
         <div className='flex'>
             <button className='m-3 rounded-2xl shadow-2xl p-2 border font-bold cursor-pointer' onClick={()=> navigate("/dashboard")}>Dashboard</button>

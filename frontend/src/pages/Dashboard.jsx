@@ -5,7 +5,13 @@ function Dashboard() {
     const [data, setData] = useState(null);
     //puxar o token pra usar com middleware
     async function list() {
-        const response = await fetch("http://localhost:3000/guest/dashboard");
+        const token = localStorage.getItem("token")
+        const response = await fetch("http://localhost:3000/guest/dashboard",{
+            headers:{
+                Authorization: `Bearer ${token}` 
+            }
+            
+        });
         const res = await response.json();
         setData(res);
     }

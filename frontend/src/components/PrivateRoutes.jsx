@@ -7,7 +7,7 @@ export default function PrivateRoutes({ children, allowRoles }) {
     if (!token ){
         return <Navigate to="/" />
     }
-    if(allowRoles && allowRoles != role) {
+    if(allowRoles && !allowRoles.includes(role)) {
         return <Navigate to="/reception"/>
     }
     return children
