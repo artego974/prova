@@ -11,10 +11,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/dashboard' element={<PrivateRoutes allowRoles={["admin"]}><Dashboard/></PrivateRoutes>}/>
-        <Route path='/admin' element={<PrivateRoutes allowRoles={["admin"]}><Admin/></PrivateRoutes>}/>
-        <Route path='/reception' element={<PrivateRoutes allowRoles={["admin","cerimonialista"]}><Reception/></PrivateRoutes>}/>
+        <Route path='/' element={<Login />} />
+        <Route path='/dashboard' element={<PrivateRoutes allowRoles={["admin"]}><Dashboard /></PrivateRoutes>} />
+        <Route path='/admin' element={<PrivateRoutes allowRoles={["admin"]}><Admin /></PrivateRoutes>} />
+        <Route path='/reception' element={<PrivateRoutes allowRoles={["admin", "cerimonialista"]}><Reception /></PrivateRoutes>} />
       </Routes>
     </BrowserRouter>
   )

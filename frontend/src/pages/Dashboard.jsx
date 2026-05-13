@@ -1,42 +1,38 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 function Dashboard() {
     const [data, setData] = useState(null);
-    const [erro, setErro] = useState("")
-
+    //puxar o token pra usar com middleware
     async function list() {
-        try{
-            const response = await fetch("http://localhost:3000/guest/dashboard");
-            const res = await response.json();
-            setData(res);
-        }catch(e){
-            setErro(e)
-        }
+        const response = await fetch("http://localhost:3000/guest/dashboard");
+        const res = await response.json();
+        setData(res);
     }
 
     useEffect(() => {
-        list()
+        list();
     }, []);
 
+    if (!data) return <p>Carregando...</p>;
+
     return (
-        <div className='h-screen flex justify-center items-center'>
-            {erro ? (<p>erro</p>) : (<p></p>)}
-            <div className='w-1/4 p-5 shadow-2xl'>
-                Total:{data.total}
+        <div className="h-screen flex justify-center items-center flex-col ">
+            <Header />
+            <div className="shadow w-1/4 min-h-1/10 flex items-center justify-center">
+                <h1> <span className="font-bold">Total:</span> {data.total}</h1>
             </div>
-            <div className='w-1/4 p-5 shadow-2xl'>
-                Checkins realizados:{data.check_in}
+            <div className="shadow w-1/4 min-h-1/10 flex items-center justify-center">
+                <h1> <span className="font-bold">Confirmados:</span> {data.check_in}</h1>
             </div>
-            <div className='w-1/4 p-5 shadow-2xl'>
-                Pendentes:{data.pending}
+            <div className="shadow w-1/4 min-h-1/10 flex items-center justify-center">
+                <h1> <span className="font-bold">Pendentes:</span> {data.pending}</h1>
             </div>
-            <div className='w-1/4 p-5 shadow-2xl'>
-                Ocupacidade:{data.ocuppancy}
+            <div className="shadow w-1/4 min-h-1/10 flex items-center justify-center">
+                <h1> <span className="font-bold">Ocupação:</span> {data.ocuppancy}%</h1>
             </div>
         </div>
-    )
+    );
 }
 
-export default Dashboard
-
-
+export default Dashboard;

@@ -17,6 +17,8 @@ function Card(props) {
             <p>{props.email}</p>
             <p>{props.table_number}</p>
             <p>{props.check_in}</p>
+            {props.check_in ? <p>Fez checkin</p> : <button onClick={Checkin}></button>}
+            
         </div>
     )
 }

@@ -4,8 +4,11 @@ import { Navigate } from "react-router-dom"
 export default function PrivateRoutes({ children, allowRoles }) {
     const token = localStorage.getItem("token")
     const role = localStorage.getItem("role")
-    if (!token || (allowRoles && allowRoles != role)) {
+    if (!token ){
         return <Navigate to="/" />
+    }
+    if(allowRoles && allowRoles != role) {
+        return <Navigate to="/reception"/>
     }
     return children
 }
